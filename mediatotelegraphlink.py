@@ -17,15 +17,16 @@ teletips=Client(
 @teletips.on_message(filters.command('start') & filters.private)
 async def start(client, message):
     text = f"""
-Heya {message.from_user.mention},
-I am here to generate Telegraph links for your media files.
+هاي {message.from_user.mention},
+أنا هنا لإنشاء روابط Telegraph لملفات الوسائط الخاصة بك.
 
-Simply send a valid media file directly to this chat.
-Valid file types are 'jpeg', 'jpg', 'png', 'mp4' and 'gif'.
+ما عليك سوى إرسال ملف وسائط صالح مباشرة إلى هذه الدردشة.
+أنواع الملفات الصالحة هي "jpeg" و "jpg" و "png" و "mp4" و "gif".
 
-To generate links in **group chats**, add me to your supergroup and send the command <code>/tl</code> as a reply to a valid media file.
-
-🏠 | [Home](https://t.me/teletipsofficialchannel)
+لإنشاء روابط في الدردشات الجماعية ، أضفني إلى مجموعتك الفائقة وأرسل الأمر / tl كرد على ملف وسائط صالح.
+InlineKeyboardButton(
+                        "مطور البوت🌀", url=f"https://t.me/Y_408")
+                ],
             """
     await teletips.send_message(message.chat.id, text, disable_web_page_preview=True)
     
@@ -33,18 +34,18 @@ To generate links in **group chats**, add me to your supergroup and send the com
 @teletips.on_message(filters.media & filters.private)
 async def get_link_private(client, message):
     try:
-        text = await message.reply("Processing...")
+        text = await message.reply("يعالج... ")
         async def progress(current, total):
-            await text.edit_text(f"📥 Downloading media... {current * 100 / total:.1f}%")
+            await text.edit_text(f"📥 تحميل الوسائط... {current * 100 / total:.1f}%")
         try:
             location = f"./media/private/"
             local_path = await message.download(location, progress=progress)
-            await text.edit_text("📤 Uploading to Telegraph...")
+            await text.edit_text("📤 تحميل علي Telegraph...")
             upload_path = upload_file(local_path) 
             await text.edit_text(f"**🌐 | Telegraph Link**:\n\n<code>https://telegra.ph{upload_path[0]}</code>")     
             os.remove(local_path) 
         except Exception as e:
-            await text.edit_text(f"**❌ | File upload failed**\n\n<i>**Reason**: {e}</i>")
+            await text.edit_text(f"**❌ | فشل تحميل الملف**\n\n<i>**Reason**: {e}</i>")
             os.remove(local_path) 
             return                 
     except Exception:
@@ -53,18 +54,18 @@ async def get_link_private(client, message):
 @teletips.on_message(filters.command('tl'))
 async def get_link_group(client, message):
     try:
-        text = await message.reply("Processing...")
+        text = await message.reply("يعالج...")
         async def progress(current, total):
-            await text.edit_text(f"📥 Downloading media... {current * 100 / total:.1f}%")
+            await text.edit_text(f"📥 تحميل الوسائط... {current * 100 / total:.1f}%")
         try:
             location = f"./media/group/"
             local_path = await message.reply_to_message.download(location, progress=progress)
-            await text.edit_text("📤 Uploading to Telegraph...")
+            await text.edit_text("📤 تحميل علي Telegraph...")
             upload_path = upload_file(local_path) 
             await text.edit_text(f"**🌐 | Telegraph Link**:\n\n<code>https://telegra.ph{upload_path[0]}</code>")     
             os.remove(local_path) 
         except Exception as e:
-            await text.edit_text(f"**❌ | File upload failed**\n\n<i>**Reason**: {e}</i>")
+            await text.edit_text(f"**❌ | فشل تحميل الملف**\n\n<i>**Reason**: {e}</i>")
             os.remove(local_path) 
             return         
     except Exception:
