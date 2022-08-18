@@ -24,7 +24,11 @@ async def start(client, message):
 أنواع الملفات الصالحة هي "jpeg" و "jpg" و "png" و "mp4" و "gif".
 
 لإنشاء روابط في الدردشات الجماعية ، أضفني إلى مجموعتك الفائقة وأرسل الأمر / tl كرد على ملف وسائط صالح.
+🏠 | [CH](https://t.me/TELEMEX)
 
+❤ | [DEV](https://t.me/Y_408)
+
+🔥 | [DEV²](https://t.me/M_408)
             """
     await teletips.send_message(message.chat.id, text, disable_web_page_preview=True)
     
