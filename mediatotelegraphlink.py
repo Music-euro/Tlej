@@ -24,10 +24,8 @@ async def start(client, message):
 أنواع الملفات الصالحة هي "jpeg" و "jpg" و "png" و "mp4" و "gif".
 
 لإنشاء روابط في الدردشات الجماعية ، أضفني إلى مجموعتك الفائقة وأرسل الأمر / tl كرد على ملف وسائط صالح.
+
             """
-            InlineKeyboardButton(
-                        "مطور البوت🌀", url=f"https://t.me/JOO")
-                ],
     await teletips.send_message(message.chat.id, text, disable_web_page_preview=True)
     
 
@@ -40,9 +38,9 @@ async def get_link_private(client, message):
         try:
             location = f"./media/private/"
             local_path = await message.download(location, progress=progress)
-            await text.edit_text("📤 تحميل علي Telegraph...")
+            await text.edit_text("📤 تحميل علي تيليجرام...")
             upload_path = upload_file(local_path) 
-            await text.edit_text(f"**🌐 | Telegraph Link**:\n\n<code>https://telegra.ph{upload_path[0]}</code>")     
+            await text.edit_text(f"**🌐 | تيليجرام لينك**:\n\n<code>https://telegra.ph{upload_path[0]}</code>")     
             os.remove(local_path) 
         except Exception as e:
             await text.edit_text(f"**❌ | فشل تحميل الملف**\n\n<i>**Reason**: {e}</i>")
@@ -60,9 +58,9 @@ async def get_link_group(client, message):
         try:
             location = f"./media/group/"
             local_path = await message.reply_to_message.download(location, progress=progress)
-            await text.edit_text("📤 تحميل علي Telegraph...")
+            await text.edit_text("📤 تحميل علي تيليجرام...")
             upload_path = upload_file(local_path) 
-            await text.edit_text(f"**🌐 | Telegraph Link**:\n\n<code>https://telegra.ph{upload_path[0]}</code>")     
+            await text.edit_text(f"**🌐 | تيليجرام لينك**:\n\n<code>https://telegra.ph{upload_path[0]}</code>")     
             os.remove(local_path) 
         except Exception as e:
             await text.edit_text(f"**❌ | فشل تحميل الملف**\n\n<i>**Reason**: {e}</i>")
@@ -71,7 +69,8 @@ async def get_link_group(client, message):
     except Exception:
         pass                                           
 
-print("Bot is alive!")
+prطint("Bot is alive!")
 teletips.run()
 
 #Copyright ©️ 2022 TeLe TiPs. All Rights Reserved
+/
